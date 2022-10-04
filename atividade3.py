@@ -72,7 +72,8 @@ class Carro:
             comb_gasto = kmPecorridos / self.consumo # combustível gasto
             self.quantCombAtual = self.quantCombAtual - comb_gasto
         else:
-            kmPecorridos -= maxKm
+            diferencaKm = kmPecorridos - maxKm
+            kmPecorridos = kmPecorridos - diferencaKm
             self.velocidade_media = (kmPecorridos / self.velocidadeMedia) #tempo de viajem
             comb_gasto = kmPecorridos / self.consumo # combustível gasto
             self.quantCombAtual = self.capacidadeTanque - comb_gasto
