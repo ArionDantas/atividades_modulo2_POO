@@ -56,39 +56,48 @@ Completa               |
 ENCERRA                | 
 -----------------------------------------------------------------------------------------------
 """
-
-import math
-
 class Carro:
     # consumo = km / l
     def __init__(self, velocidadeMedia, consumo, capacidadeTanque):
         self.velocidadeMedia = velocidadeMedia
         self.consumo = consumo
         self.capacidadeTanque = capacidadeTanque
-        self.quantCombAtual = 0
+        self.quantCombAtual= capacidadeTanque
         self.velocidade_media = 0
 
     def viajar(self, kmPecorridos):
-        self.velocidade_media = (kmPecorridos / self.velocidadeMedia) #self.velocidade_media + 
-        comb_gasto = kmPecorridos / self.consumo
-        self.quantCombAtual = self.capacidadeTanque - comb_gasto
-        
+        maxKm = self.consumo * self.capacidadeTanque # máximo de km que o carro pode andar
+        if kmPecorridos < maxKm:
+            self.velocidade_media = (kmPecorridos / self.velocidadeMedia) #tempo de viajem
+            comb_gasto = kmPecorridos / self.consumo # combustível gasto
+            self.quantCombAtual = self.quantCombAtual - comb_gasto
+        else:
+            kmPecorridos -= maxKm
+            self.velocidade_media = (kmPecorridos / self.velocidadeMedia) #tempo de viajem
+            comb_gasto = kmPecorridos / self.consumo # combustível gasto
+            self.quantCombAtual = self.capacidadeTanque - comb_gasto
+
         print(f"O carro andou {kmPecorridos:.2f} km em {self.velocidade_media:.2f} horas e gastou {comb_gasto:.2f} litros de combustivel. O carro agora possui {self.quantCombAtual:.2f} litros de combustivel.")
 
     def abastecer(self, litrosAbastecidos):
         self.quantCombAtual += litrosAbastecidos
-        print(f"O carro foi abastecido com {litrosAbastecidos:.2f} litros. O tanque agora esta com {self.quantCombAtual:.2f} litros de combustivel.")
+        if self.quantCombAtual > self.capacidadeTanque:
+            diferenca = self.quantCombAtual - self.capacidadeTanque
+            self.quantCombAtual -= diferenca
+
+        print(
+            f"O carro foi abastecido com {litrosAbastecidos:.2f} litros. O tanque agora esta com {self.quantCombAtual:.2f} litros de combustivel.")
 
     def completar(self):
         completar = self.capacidadeTanque - self.quantCombAtual
         self.quantCombAtual += completar
         print(f"O carro foi abastecido com {completar:.2f} litros e esta com o tanque cheio!")
 
+
 # programa = " "
-vm = int(input()) # km / l
+vm = int(input())  # km / l
 consumo = int(input())
 capTanque = int(input())
-
 carro1 = Carro(vm, consumo, capTanque)
 
 # while programa != "encerrar":
@@ -111,4 +120,3 @@ while True:
 
     except EOFError:
         break
-
