@@ -10,7 +10,7 @@ coordenadas dos três vértices do triângulo.
 A saída deverá ser o perímetro do triângulo, represetada por um número
 real com duas casas decimais apenas.
 Casos de Teste
-Lembre-se que as entradas e saídas devem ser idênticas às dos casos de teste.
+Lembre-se que as entradas e saídas devem ser idênticas às dos casos de teste!
 ----------------------------------------
 Exemplo de Entrada  |  Exemplo de Saida
 ----------------------------------------
