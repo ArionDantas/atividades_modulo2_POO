@@ -30,9 +30,6 @@ Exemplo de Entrada  |  Exemplo de Saida
 ----------------------------------------
 """
 
-
-import math
-
 class Triangulo:
   def __init__(self, ax, ay, bx, by, cx, cy):
     self.ax = ax
