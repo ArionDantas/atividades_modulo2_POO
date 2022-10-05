@@ -78,6 +78,10 @@ class Carro:
             comb_gasto = kmPecorridos / self.consumo # combustível gasto
             self.quantCombAtual = self.capacidadeTanque - comb_gasto
 
+            if self.quantCombAtual < 0:
+                for x in range(self.quantCombAtual, 0):
+                    self.quantCombAtual += 1
+
         print(f"O carro andou {kmPecorridos:.2f} km em {self.velocidade_media:.2f} horas e gastou {comb_gasto:.2f} litros de combustivel. O carro agora possui {self.quantCombAtual:.2f} litros de combustivel.")
 
     def abastecer(self, litrosAbastecidos):
